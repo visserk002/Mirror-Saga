@@ -46,10 +46,11 @@ public class PlayerCombat : MonoBehaviour {
 
 	private void CheckInputs()
 	{		
-		if(Input.GetMouseButtonDown(0) && canAttack)
+		if(Input.GetKeyDown(KeyCode.Space) && canAttack)
 		{
 			attackCooldownTimer = 0;
 			anim.SetBool("Attack", true);
+			anim.SetFloat("Speed", 0.0f);
 		}
 		else
 			anim.SetBool("Attack", false);

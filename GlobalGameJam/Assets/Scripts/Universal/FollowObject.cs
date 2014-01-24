@@ -3,7 +3,7 @@ using System.Collections;
 
 public class FollowObject : MonoBehaviour {
 
-	public int boundLeft, boundRight;
+	public Vector3 camPosTargetOffset;
 	public Transform followTarget;
 
 	// Use this for initialization
@@ -14,9 +14,9 @@ public class FollowObject : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		Vector3 camPosTarget;
-		camPosTarget = followTarget.transform.position + new Vector3(0,4,-8);
+		camPosTarget = followTarget.transform.position + camPosTargetOffset;
 			
-		transform.LookAt(followTarget.transform.position);
+		//transform.LookAt(followTarget.transform.position);
 		transform.position = Vector3.Lerp(transform.position, camPosTarget, Time.fixedDeltaTime * 10);
 
 	

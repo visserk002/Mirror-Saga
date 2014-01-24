@@ -4,12 +4,14 @@ using System.Collections;
 public class CharacterMovement : MonoBehaviour {
 
 	// speed is the rate at which the object will rotate
-	public float rotateSpeed;
+	public float rotateSpeed = 100.0f;
+	public float zPosition;
 	public bool Knight, Dude;
 
 
 	private Animator anim;
 	private Quaternion lookTowards;
+	private float resetZpos;
 
 
 	void Start()
@@ -19,9 +21,15 @@ public class CharacterMovement : MonoBehaviour {
 
 	void FixedUpdate () 
 	{
-		/*
-		transform.position.Set(transform.position.x, transform.position.y, 0);
+		if(resetZpos >= 5.0f)
+		{
+			resetZpos = 0;
+			Vector3 newPos = new Vector3(transform.position.x, transform.position.y, zPosition);
+			transform.position = newPos;
+		}else
+			resetZpos += Time.fixedDeltaTime;
 
+		/*
 		// Generate a plane that intersects the transform's position with an upwards normal.
 		Plane playerPlane = new Plane(Vector3.up, transform.position);
 		
@@ -61,6 +69,7 @@ public class CharacterMovement : MonoBehaviour {
 	
 	void Update ()
 	{
+
 		if(Knight)
 		{
 			//Animation handling
@@ -71,16 +80,17 @@ public class CharacterMovement : MonoBehaviour {
 					lookTowards = Quaternion.Euler(new Vector3(0,90,0));
 					transform.rotation = Quaternion.Slerp(transform.rotation, lookTowards , rotateSpeed * Time.fixedTime);
 				}
-				else if(Input.GetKey(KeyCode.A))
+				if(Input.GetKey(KeyCode.A))
 				{
 					lookTowards = Quaternion.Euler(new Vector3(0,-90,0));
 					transform.rotation = Quaternion.Slerp(transform.rotation, lookTowards , rotateSpeed * Time.fixedTime);
 				}
 
-				if(Input.GetKey(KeyCode.LeftShift))
-					anim.SetFloat("Speed", 1.0f);
-				else
-					anim.SetFloat("Speed", 0.5f);
+				anim.SetFloat("Speed", 1.0f);
+			}
+			else if(Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A) )
+			{
+				anim.SetFloat("Speed", 0.0f);
 			}
 		}
 
@@ -89,23 +99,25 @@ public class CharacterMovement : MonoBehaviour {
 			//Animation handling
 			if(Input.GetKey(KeyCode.Keypad6) || Input.GetKey(KeyCode.Keypad4) )
 			{
-				if(Input.GetKey(KeyCode.Keypad4))
+				if(Input.GetKey(KeyCode.Keypad6))
 				{
 					lookTowards = Quaternion.Euler(new Vector3(0,90,0));
 					transform.rotation = Quaternion.Slerp(transform.rotation, lookTowards , rotateSpeed * Time.fixedTime);
 				}
-				else if(Input.GetKey(KeyCode.Keypad6))
+				else if(Input.GetKey(KeyCode.Keypad4))
 				{
 					lookTowards = Quaternion.Euler(new Vector3(0,-90,0));
 					transform.rotation = Quaternion.Slerp(transform.rotation, lookTowards , rotateSpeed * Time.fixedTime);
 				}
 				
-				if(Input.GetKey(KeyCode.LeftShift))
-					anim.SetFloat("Speed", 1.0f);
-				else
-					anim.SetFloat("Speed", 0.5f);
+				anim.SetFloat("Speed", 1.0f);
+			}
+			else if(Input.GetKeyUp(KeyCode.Keypad6) || Input.GetKeyUp(KeyCode.Keypad4) )
+			{
+				anim.SetFloat("Speed", 0.0f);
 			}
 		}
+
 		
 	}
 }

@@ -1021,10 +1021,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 400134}
   - 95: {fileID: 9500000}
-  - 143: {fileID: 14300000}
-  - 54: {fileID: 5400000}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
+  - 143: {fileID: 14300000}
+  - 54: {fileID: 5400000}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Player
@@ -1841,7 +1841,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100134}
   m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106829}
-  m_LocalPosition: {x: -7.8309288, y: 1.58000004, z: 0}
+  m_LocalPosition: {x: 1.1690712, y: 1.58000004, z: 6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400132}
@@ -1955,8 +1955,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ac0184a107f9a44289fa648fdd08793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 0
-  Knight: 0
+  rotateSpeed: 100
+  zPosition: 6
+  Knight: 1
   Dude: 0
 --- !u!114 &11400002
 MonoBehaviour:
@@ -1970,7 +1971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 400000}
-  attackCooldown: .699999988
+  attackCooldown: .400000006
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
