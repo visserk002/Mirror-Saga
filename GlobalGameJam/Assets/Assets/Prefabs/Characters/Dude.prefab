@@ -2402,8 +2402,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100176}
   m_LocalRotation: {x: 0, y: .707106829, z: 0, w: -.707106829}
-  m_LocalPosition: {x: -4.83093023, y: 1, z: -7.15255737e-07}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: .876661956, y: 1, z: -4.66679921e-08}
+  m_LocalScale: {x: 1.20000005, y: 1.20000005, z: 1.20000005}
   m_Children:
   - {fileID: 400174}
   - {fileID: 400172}
@@ -2421,7 +2421,7 @@ Animator:
   m_Avatar: {fileID: 9000000, guid: 4ff29a25079ebf141ace52bfaf4bc4a3, type: 3}
   m_Controller: {fileID: 9100000, guid: e27dbc92b77214f4490f8d89f23070de, type: 2}
   m_CullingMode: 1
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
 --- !u!114 &11400000
@@ -2436,9 +2436,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 100
-  movementSpeed: 10
+  walkSpeed: 4
+  runSpeed: 8
   zPosition: 0
-  jumpHeight: 0
+  jumpHeight: 150
   Knight: 0
   Dude: 1
 --- !u!114 &11400002
@@ -2449,13 +2450,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 100176}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da93ddd6928094e24bb1f3f665f143d3, type: 3}
+  m_Script: {fileID: 11500000, guid: 93a892019a2809d4ba3b5e2a25ab9af7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   autoRotate: 1
-  maxRotationSpeed: 360
-  InputStringMovement: HorizontalDude
-  InputStringJump: JumpDude
+  maxRotationSpeed: 9000
+  inputStringMovement: HorizontalDude
+  inputStringJump: JumpDude
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2464,15 +2465,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 100176}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ab79d7f243824f5d9826bd83522c8df, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ec0ca14db719d6418c8e96f314e055c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canControl: 1
-  useFixedUpdate: 1
   movement:
-    maxForwardSpeed: 10
-    maxSidewaysSpeed: 10
-    maxBackwardsSpeed: 10
+    maxForwardSpeed: 4
+    maxSidewaysSpeed: 8
+    maxBackwardsSpeed: 8
     slopeSpeedMultiplier:
       serializedVersion: 2
       m_Curve:
@@ -2493,14 +2492,14 @@ MonoBehaviour:
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    maxGroundAcceleration: 30
-    maxAirAcceleration: 20
-    gravity: 10
-    maxFallSpeed: 20
+    maxGroundAcceleration: 90000
+    maxAirAcceleration: 5
+    gravity: 20
+    maxFallSpeed: 5
   jumping:
     enabled: 1
     baseHeight: 1
-    extraHeight: 4.0999999
+    extraHeight: 1
     perpAmount: 0
     steepPerpAmount: .5
   movingPlatform:
@@ -2508,7 +2507,7 @@ MonoBehaviour:
     movementTransfer: 2
   sliding:
     enabled: 1
-    slidingSpeed: 15
+    slidingSpeed: 0
     sidewaysControl: 1
     speedControl: .400000006
 --- !u!137 &13700000

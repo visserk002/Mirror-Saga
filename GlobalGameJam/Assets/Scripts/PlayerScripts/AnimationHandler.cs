@@ -7,7 +7,7 @@ public class AnimationHandler : MonoBehaviour {
 	public float rotateSpeed = 100.0f;
 	public float walkSpeed = 4.0f, runSpeed = 8.0f;
 	public float zPosition, jumpHeight;
-	public bool Knight, Dude;
+	public bool Knight, Dude;	
 
 	private Animator anim;
 	private Quaternion lookTowards;
@@ -90,5 +90,6 @@ public class AnimationHandler : MonoBehaviour {
 					anim.SetFloat("Speed", 0.0f);
 				}
 			}
+
 	}
 }
