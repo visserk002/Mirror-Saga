@@ -50,7 +50,7 @@ public class PlayerCombat : MonoBehaviour {
 		{
 			attackCooldownTimer = 0;
 			anim.SetBool("Attack", true);
-			anim.SetFloat("Speed", 0.0f);
+			//anim.SetFloat("Speed", 0.0f);
 		}
 		else
 			anim.SetBool("Attack", false);

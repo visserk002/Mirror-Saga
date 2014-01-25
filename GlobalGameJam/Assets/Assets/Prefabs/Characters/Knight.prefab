@@ -1021,13 +1021,14 @@ GameObject:
   m_Component:
   - 4: {fileID: 400134}
   - 95: {fileID: 9500000}
+  - 143: {fileID: 14300000}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
-  - 143: {fileID: 14300000}
-  - 54: {fileID: 5400000}
+  - 114: {fileID: 11400008}
+  - 114: {fileID: 11400006}
   m_Layer: 0
   m_Name: Knight
-  m_TagString: Player
+  m_TagString: MirrorPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1840,9 +1841,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100134}
-  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106829}
-  m_LocalPosition: {x: 1.1690712, y: 1.58000004, z: 6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: -.707106829}
+  m_LocalPosition: {x: 1.1690712, y: 1, z: 10}
+  m_LocalScale: {x: 1.29999995, y: 1.29999995, z: 1.29999995}
   m_Children:
   - {fileID: 400132}
   - {fileID: 400004}
@@ -1903,21 +1904,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_Mesh: {fileID: 4300000, guid: bd0969f4a481ea74abf99cda28e242ee, type: 3}
---- !u!54 &5400000
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100134}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!65 &6500000
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1941,8 +1927,8 @@ Animator:
   m_Avatar: {fileID: 9000000, guid: bd0969f4a481ea74abf99cda28e242ee, type: 3}
   m_Controller: {fileID: 9100000, guid: e27dbc92b77214f4490f8d89f23070de, type: 2}
   m_CullingMode: 1
-  m_ApplyRootMotion: 1
-  m_AnimatePhysics: 1
+  m_ApplyRootMotion: 0
+  m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -1956,7 +1942,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 100
-  zPosition: 6
+  movementSpeed: 6
+  zPosition: 10
+  jumpHeight: 150
   Knight: 1
   Dude: 0
 --- !u!114 &11400002
@@ -1971,7 +1959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 400000}
-  attackCooldown: .400000006
+  attackCooldown: 0
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1984,6 +1972,76 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+--- !u!114 &11400006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da93ddd6928094e24bb1f3f665f143d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoRotate: 1
+  maxRotationSpeed: 9000
+  InputStringMovement: HorizontalKnight
+  InputStringJump: JumpKnight
+--- !u!114 &11400008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ab79d7f243824f5d9826bd83522c8df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canControl: 1
+  useFixedUpdate: 1
+  movement:
+    maxForwardSpeed: 8
+    maxSidewaysSpeed: 8
+    maxBackwardsSpeed: 8
+    slopeSpeedMultiplier:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: .493253827
+        value: .998016655
+        inSlope: -.0111197792
+        outSlope: -.0111197792
+        tangentMode: 0
+      - time: .983333349
+        value: .948125005
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    maxGroundAcceleration: 9000
+    maxAirAcceleration: 5
+    gravity: 20
+    maxFallSpeed: 5
+  jumping:
+    enabled: 1
+    baseHeight: 1
+    extraHeight: 1
+    perpAmount: 0
+    steepPerpAmount: .5
+  movingPlatform:
+    enabled: 1
+    movementTransfer: 2
+  sliding:
+    enabled: 1
+    slidingSpeed: 0
+    sidewaysControl: 1
+    speedControl: .400000006
 --- !u!137 &13700000
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2072,13 +2130,13 @@ CharacterController:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100134}
   serializedVersion: 2
-  m_Height: 1.79999995
-  m_Radius: .200000003
+  m_Height: 2
+  m_Radius: .5
   m_SlopeLimit: 45
   m_StepOffset: .300000012
-  m_SkinWidth: 9.99999975e-05
+  m_SkinWidth: .0799999982
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: .899999976, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

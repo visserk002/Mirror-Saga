@@ -16,11 +16,11 @@ QualitySettings:
     shadowDistance: 150
     blendWeights: 4
     textureQuality: 0
-    anisotropicTextures: 2
-    antiAliasing: 4
+    anisotropicTextures: 1
+    antiAliasing: 2
     softParticles: 0
     softVegetation: 1
-    vSyncCount: 1
+    vSyncCount: 2
     lodBias: 2
     maximumLODLevel: 0
     particleRaycastBudget: 4096
