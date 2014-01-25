@@ -1142,6 +1142,9 @@ MonoBehaviour:
   targetObject: {fileID: 0}
   speed: 5
   stopAtDistance: 1.5
+  playerHitTrigger: 0
+  enemyHitTrigger: 0
+  instantFlashParticles: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

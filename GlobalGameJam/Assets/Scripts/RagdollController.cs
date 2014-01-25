@@ -10,7 +10,7 @@ public class RagdollController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//Destroy instance after 5 seconds.
-		Destroy (gameObject, 5.0f);
+		Destroy (gameObject, 3.0f);
 	}
 	
 	// Update is called once per frame

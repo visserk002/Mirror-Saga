@@ -18,10 +18,9 @@ public class PlayerCombat : MonoBehaviour {
 		attackCooldownTimer = 0;
 		anim = GetComponent<Animator>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
+	void FixedUpdate()
+	{
 		currentBaseState = anim.GetCurrentAnimatorStateInfo(0);
 		if(currentBaseState.nameHash == basicAttackState)
 		{
@@ -31,6 +30,10 @@ public class PlayerCombat : MonoBehaviour {
 		{
 			weapon.collider.enabled = false;
 		}
+	}
+	
+	// Update is called once per frame
+	void Update () {
 
 		if(attackCooldownTimer >= attackCooldown)
 			canAttack = true;
@@ -50,7 +53,6 @@ public class PlayerCombat : MonoBehaviour {
 		{
 			attackCooldownTimer = 0;
 			anim.SetBool("Attack", true);
-			//anim.SetFloat("Speed", 0.0f);
 		}
 		else
 			anim.SetBool("Attack", false);
